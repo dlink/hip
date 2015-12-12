@@ -15,8 +15,7 @@ class Hip(object):
         for soul in Folks().getActive():
             phone = soul['phonenumber']
             print phone
-            #self.sms.send(phone, quote)
-
+            self.sms.send(phone, quote)
 
 class Folks(object):
 
