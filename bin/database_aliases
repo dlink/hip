@@ -1,0 +1,1 @@
+alias hdb='mysql -uhip -p$HIPDB_PASS --database=hip'

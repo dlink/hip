@@ -1,0 +1,15 @@
+environment: dev
+basedir: /home/dlink/hip
+
+database:
+   engine : mysql
+   db     : hip
+   host   : localhost
+   user   : hip
+   passwd : $HIPDB_PASS
+   dictcursor: True
+
+logging:
+   dir: /home/dlink/log
+   filename: /home/dlink/log/hip.log
+   level: DEBUG
