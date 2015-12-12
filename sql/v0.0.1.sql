@@ -24,7 +24,8 @@ desc folks;
 
 create table inspiration (
    id            integer unsigned auto_increment primary key ,
-   quote         varchar(512) not null,
+   quote         varchar(512)     not null,
+   sent          datetime         ,
    created       datetime         not null ,
    last_updated  timestamp        not null 
         default current_timestamp on update current_timestamp
