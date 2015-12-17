@@ -42,7 +42,7 @@ class Hip(HtmlPage):
     def getHeader(self):
         return '''
     <section id="banner">
-      <h1>Motivizzle</h1>
+      <h1>Motiviz</h1>
       <h2>Get Your Mental Right. Daily.</h2>
     </section>'''
 

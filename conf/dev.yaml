@@ -6,10 +6,10 @@ database:
    db     : hip
    host   : localhost
    user   : hip
-   passwd : $HIPDB_PASS
+   passwd : $MOTIVIZDB_PASS
    dictcursor: True
 
 logging:
    dir: /home/dlink/log
-   filename: /home/dlink/log/hip.log
+   filename: /home/dlink/log/motiviz.log
    level: DEBUG
