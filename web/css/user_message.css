@@ -1,0 +1,10 @@
+.userMsg {
+    padding: 10px;
+    text-align: center;
+    font-size: 2.0em;
+    color: CornflowerBlue;
+}
+
+.errorMsg {
+    color: Crimson;
+}

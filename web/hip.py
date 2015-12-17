@@ -13,7 +13,8 @@ PHONE_NUMBER_REGEX = r'(^[+0-9]{1,3})*([0-9]{10,11}$)'
 class Hip(HtmlPage):
 
     def __init__(self):
-        HtmlPage.__init__(self, 'hip')
+        HtmlPage.__init__(self, 'Motiviz')
+        self.style_sheets = ['css/styles.css', 'css/user_message.css']
         self.user_msg = ''
         self.user_error_msg = ''
 
@@ -39,21 +40,31 @@ class Hip(HtmlPage):
             self.getFooter()
 
     def getHeader(self):
-        return center(h3('Hip Hop Inspiration'))
+        return '''
+    <section id="banner">
+      <h1>Motivizzle</h1>
+      <h2>Get Your Mental Right. Daily.</h2>
+    </section>'''
 
     def getUserMsg(self, error=0):
-        user_msg = center(div(self.user_msg,
-                              style='background-color: yellow'))
-        error_msg = center(div(self.user_error_msg,
-                               style='background-color: red'))
-        return user_msg + \
-            error_msg
-                       
-    
+        user_msg  = div(self.user_msg,       class_='userMsg')
+        error_msg = div(self.user_error_msg, class_='userMsg errorMsg')
+        return user_msg + error_msg
+
     def getBody(self):
-        return center(p('Sign up here') + \
-                          p('Phone Number: ' + input(name='phonenumber')) + \
-                          input(type='submit'))
+        return '''
+    <section class="info">
+      <h2>Start Your Day Right</h2>
+      <p>Get inspirational texts from your favorite rappers. Sign up now.</p>
+
+      <div class="sign-up">
+        <div class="phone-form">
+            <label class="phone-label icon-phone" for="phone"></label>
+          <input type="tel" name="phonenumber" class="phone-input">
+        </div>
+        <input type="submit" class="submit-btn" value="Sign Up">
+      </div>
+    </section>'''
 
     def getFooter(self):
         return ''
