@@ -31,7 +31,7 @@ class Hip(object):
     def inspire(self):
         inspiration = Inspiration()
         quote = inspiration.getNext()
-        print quote['quote']
+        print quote['quote'].encode('ascii', 'replace')
         for soul in Folks().getActive():
             phone = soul['phonenumber']
             print phone
