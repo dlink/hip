@@ -4,12 +4,29 @@ from datetime import datetime
 
 from vlib import db
 
+from cli import CLI
 from sms import Sms
+
+class HipError(Exception): pass
 
 class Hip(object):
 
     def __init__(self):
         self.sms = Sms()
+
+    def run(self):
+        commands = ['inspire']
+        self.cli = CLI(self.process, commands)
+        print self.cli.process()
+
+    def process(self, *args):
+        args = list(args)
+
+        cmd = args.pop(0)
+        if cmd == 'inspire':
+            self.inspire()
+        else:
+            raise HipError('Unrecognized command: %s' % cmd)
 
     def inspire(self):
         inspiration = Inspiration()
@@ -43,4 +60,4 @@ class Inspiration(object):
         self.db.execute(sql)
 
 if __name__ == '__main__':
-    Hip().inspire()
+    Hip().run()
