@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from datetime import datetime
+
 from vlib import db
 
 from sms import Sms
@@ -10,12 +12,14 @@ class Hip(object):
         self.sms = Sms()
 
     def inspire(self):
-        quote = Inspiration().getNext()
-        print quote
+        inspiration = Inspiration()
+        quote = inspiration.getNext()
+        print quote['quote']
         for soul in Folks().getActive():
             phone = soul['phonenumber']
             print phone
-            self.sms.send(phone, quote)
+            self.sms.send(phone, quote['quote'])
+        inspiration.setSentDate(quote['id'], datetime.now())
 
 class Folks(object):
 
@@ -32,9 +36,11 @@ class Inspiration(object):
 
     def getNext(self):
         sql = 'select * from inspiration where sent is null order by id limit 1'
-        return self.db.query(sql)[0]['quote']
+        return self.db.query(sql)[0]
     
-        
-        
+    def setSentDate(self, id, date):
+        sql = "update inspiration set sent = '%s' where id = %s" % (date, id)
+        self.db.execute(sql)
+
 if __name__ == '__main__':
     Hip().inspire()
