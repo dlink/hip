@@ -1,1 +1,1 @@
-alias hdb='mysql -uhip -p$HIPDB_PASS --database=hip'
+alias hdb='mysql -uhip -p$MOTIVIZDB_PASS --database=hip'
